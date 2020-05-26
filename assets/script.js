@@ -4,10 +4,12 @@ var quizScreen = document.getElementById("quiz-screen");
 var endScreen = document.getElementById("end-screen");
 var question = document.getElementById("question-title");
 var choicesEl = document.getElementById("choices");
+var scoreEl = document.getElementById("score")
 var time = 60;
 var timer;
 var timerEl = document.getElementById("timer");
 var questionIndex = 0;
+var correct = [];
 
 var questions = [
     {
@@ -97,7 +99,8 @@ function questionClick() {
 
     } else {
         console.log("right")
-        //display correct 
+        correct.push(questions[questionIndex]);
+        console.log(correct)
     }
     questionIndex++;
     if (questionIndex === questions.length) {
@@ -117,4 +120,6 @@ function endGame() {
     clearInterval(timer)
     quizScreen.setAttribute("class", "hide");
     endScreen.removeAttribute("class", "hide");
+    var score = time * correct.length;
+    scoreEl.textContent = "Your score is " + score;
 }
