@@ -2,23 +2,24 @@
     display: none;
 }
 
-#h1 { font-size: 36px;
+#h1 { font-size: 40px;
       font-family: 'Courier New', Courier, monospace;
       color: dimgray;
-    }
+      }
 
+    
 .card { text-align: center;
-        background-color: ghostwhite;
+        text-justify: auto;
         border: none;
-}     
+        }     
 
 #start-button { background-color: rgb(45, 150, 50);
-                font-size: 30px;
+                font-size: 36px;
                 font-family: 'Courier New', Courier, monospace;
                 font-weight: bold;
                 color: white;
                 box-sizing: border-box;
-                border-radius: 2px;
+                border-radius: 4px;
                 border-color: black;
                 width: 33%;
                 display: block;
@@ -30,11 +31,11 @@
 
 #start-screen,
 #quiz-screen,
-#end-screen  { text-align: center;
-               background-color: white;
+#end-screen  { text-align: center;                              
                margin-left: 30px;
                margin-right: 30px;
                margin-top: 30px;
+               margin-bottom: 30px;
                image-orientation: from-image;
 }
 
@@ -44,21 +45,29 @@
            font-size: 30px;
            align-items: center;
            padding:5px;       
-                  
+                 
           }
 
 .choice { margin: 10px;
-          border: 1px; 
+          border: border-radius 2px; 
+          background-color: rgba(206, 209, 34, 0.959);
         }   
            
 .duck-img {height: 300px;
-           width: 200px;
+           width: 250px;
            border: 5px solid;
            border: radius 2px;
            border-color: black;
            margin-left: auto;
            margin-right: auto;
            padding: 5px;
-        }          
+        }    
+        
+#score {color: orangered;
+        font-size: 40px;
+}  
+
+#save-score {background-color: rgb(45, 150, 50);
+}
          
                 

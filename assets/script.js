@@ -1,16 +1,21 @@
+// so many variables! Buttons, screens, timer elements
 var startButton = document.getElementById("start-button");
 var startScreen = document.getElementById("start-screen");
 var quizScreen = document.getElementById("quiz-screen");
 var endScreen = document.getElementById("end-screen");
 var question = document.getElementById("question-title");
 var choicesEl = document.getElementById("choices");
-var scoreEl = document.getElementById("score")
+var scoreEl = document.getElementById("score");
 var time = 60;
 var timer;
 var timerEl = document.getElementById("timer");
 var questionIndex = 0;
 var correct = [];
+var score;
+var button = document.getElementById("save-score");
 
+
+// all of the questions, with choices in array //
 var questions = [
     {
         question: 'In CSS, the space inside a border is defined by?',
@@ -22,11 +27,13 @@ var questions = [
         ],
         answer: 'padding'
     },
+
     {
         question: 'True or false, Boolean values can only have one value',
         choices: ['true', 'false'],
         answer: 'true'
     },
+
     {
         question: 'In HTML, which attribute provides text for screen readers?',
         choices: [
@@ -58,6 +65,8 @@ var questions = [
     }
 ];
 
+
+// the start button and timer clock 
 startButton.addEventListener("click", function () {
     startScreen.setAttribute("class", "hide");
     quizScreen.removeAttribute("class", "hide");
@@ -66,11 +75,12 @@ startButton.addEventListener("click", function () {
     startGame();
 });
 
+// moves on to the questions 
 function startGame() {
     buildQuestionCard()
-
 };
 
+// the questions
 function buildQuestionCard() {
     var currentQuestion = questions[questionIndex];
     question.textContent = currentQuestion.question;
@@ -82,11 +92,10 @@ function buildQuestionCard() {
         answerBtn.textContent = choice;
         answerBtn.onclick = questionClick;
         choicesEl.appendChild(answerBtn);
-
-
     })
 }
 
+// if the answer is wrong they lose time 
 function questionClick() {
     console.log(this.value)
     if (this.value !== questions[questionIndex].answer) {
@@ -100,15 +109,18 @@ function questionClick() {
     } else {
         console.log("right")
         correct.push(questions[questionIndex]);
-        console.log(correct)
+        
     }
     questionIndex++;
     if (questionIndex === questions.length) {
         endGame();
     } else {
         buildQuestionCard();
-    }  //else
+    }  
 }
+    
+
+//the clock ends when the game is over or time is up 
 function clockTick() {
     time--;
     timerEl.textContent = time;
@@ -116,10 +128,35 @@ function clockTick() {
         endGame();
     }
 }
+
+//what happens when the game is done, number correct multiplied by time left.  
 function endGame() {
     clearInterval(timer)
     quizScreen.setAttribute("class", "hide");
     endScreen.removeAttribute("class", "hide");
-    var score = time * correct.length;
-    scoreEl.textContent = "Your score is " + score;
+    score = time * correct.length;
+    scoreEl.textContent = "Your score is " + score;    
 }
+function saveScore() {
+}
+
+button.addEventListener("click", function() {
+console.log("score=" + score);
+localStorage.setItem("score", score);
+});
+
+
+
+
+
+
+
+
+
+
+
+    
+      
+  
+
+
